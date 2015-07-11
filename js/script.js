@@ -61,7 +61,7 @@ $(document).ready(function() {
 		topSpacing : 0
 	});
 
-  rotate('rotate1');
+  //rotate('rotate1');
 
     // Galleries Slider
 	$('.slider_container').flexslider({
