@@ -6,8 +6,8 @@ $(window).load(function() {
 
 $(document).ready(function() {
 
-  initializeMap(lat,lng);
-  
+  // initializeMap(lat,lng);
+
 	//Elements Appear from top
 	$('.item_top').each(function() {
 		$(this).appear(function() {
@@ -36,7 +36,7 @@ $(document).ready(function() {
 			}, 1000);
 		});
 	});
-	
+
 	//Elements Appear from right
 	$('.item_right').each(function() {
 		$(this).appear(function() {
@@ -46,7 +46,7 @@ $(document).ready(function() {
 			}, 1000);
 		});
 	});
-	
+
 	//Elements Appear in fadeIn effect
 	$('.item_fade_in').each(function() {
 		$(this).appear(function() {
@@ -181,12 +181,12 @@ $(document).ready(function() {
                         $mainContent.load(url + " .single-portfolio", function(xhr, statusText, request){
                         	if(statusText == "success"){
 									             setTimeout(function () {
-                                $(".slider_container").flexslider({directionNav: true,controlNav: false	}); 
+                                $(".slider_container").flexslider({directionNav: true,controlNav: false	});
                                 $('.single-portfolio .media-container').fitVids();
 		                        		$pageWrap.find('#preloader').remove();
 		                            }, 300);
-                            }    
-		                    
+                            }
+
 							if(statusText == "error"){
 								$mainContent.html('<div class="row pad-top pad-bottom"><div class="col-md-12 pad-top pad-bottom"><div class="alert-message error"><p>The Content cannot be loaded.</p></div></div></div>');
 		                        $pageWrap.find('#preloader').remove();
@@ -200,7 +200,7 @@ $(document).ready(function() {
 	                   $("#portfolio-items a[href='" + newHash + "']").parent().addClass("current");
                      var projectIndex = $('#portfolio-items').find('article.current').index();
 						var projectLength = $('#portfolio-items article').length -1;
-            
+
 						if(projectIndex == projectLength){
 
 							jQuery('#next-project').addClass('disabled');
@@ -233,7 +233,7 @@ $(document).ready(function() {
 				     $('#close-project').on('click', function() {
                     $('#portfolio-wrap').fadeOut('100', function() {
                         $('.single-portfolio').remove();
-                    });                  
+                    });
                     history.pushState('', document.title, window.location.pathname);
                     window.location.hash = '#_';
 	                return false;
@@ -263,35 +263,35 @@ $(document).ready(function() {
 		};
 		portfolio.fullWidth();
 		portfolio.ajax();
-		
+
 
 	// Contact Form Request
-  $(".validate").validate();	
+  $(".validate").validate();
   var form = $('#contactform');
-	var submit = $('#contactForm_submit');	
-	var alertx = $('.form-respond'); 
+	var submit = $('#contactForm_submit');
+	var alertx = $('.form-respond');
 
   	// form submit event
     $(document).on('submit', '#contactform', function(e) {
 		e.preventDefault(); // prevent default form submit
 		// sending ajax request through jQuery
 		$.ajax({
-			url: 'sendemail.php', 
-			type: 'POST', 
+			url: 'sendemail.php',
+			type: 'POST',
 			dataType: 'html',
-			data: form.serialize(), 
+			data: form.serialize(),
 			beforeSend: function() {
 				alertx.fadeOut();
 				submit.html('Sending....'); // change submit button text
 			},
 			success: function(data) {
 				form.fadeOut(300);
-        alertx.html(data).fadeIn(1000); // fade in response data     
+        alertx.html(data).fadeIn(1000); // fade in response data
             setTimeout(function() {
           alertx.html(data).fadeOut(300);
           $('#name, #email, #message').val('')
           form.fadeIn(1800);
-       }, 4000 );  
+       }, 4000 );
 
 			},
 			error: function(e) {
@@ -310,7 +310,7 @@ $(document).ready(function() {
 		e.stopPropagation();
 	});
 
- 
+
 	//Back To Top
 	$(window).scroll(function() {
 		if ($(window).scrollTop() > 400) {
@@ -339,7 +339,7 @@ $(document).ready(function() {
 			event.preventDefault();
 		});
 	});
-   
+
 //FullScreen Slider
 $(function(){
 $('#fullscreen-slider').maximage({
@@ -388,27 +388,27 @@ $(function() {
         from: 50,
         to: count,
         speed: 3000,
-        refreshInterval: 50,  
-      });  
+        refreshInterval: 50,
+      });
     });
   });
 });
 
-//Initilize Google Map
- function initializeMap(lat,lng) {
-     var mapOptions = {
-       center: new google.maps.LatLng(lat, lng),
-       zoom: 16,
-       zoomControl: true,
-       scaleControl: false,
-       scrollwheel: false,
-       mapTypeId: google.maps.MapTypeId.ROADMAP
-     };
-     var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-     var marker = new google.maps.Marker({
-     position: mapOptions['center'],
-     map: map,
-     });
-       
-     return map;
- }    
+// //Initilize Google Map
+//  function initializeMap(lat,lng) {
+//      var mapOptions = {
+//        center: new google.maps.LatLng(lat, lng),
+//        zoom: 16,
+//        zoomControl: true,
+//        scaleControl: false,
+//        scrollwheel: false,
+//        mapTypeId: google.maps.MapTypeId.ROADMAP
+//      };
+//      var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+//      var marker = new google.maps.Marker({
+//      position: mapOptions['center'],
+//      map: map,
+//      });
+
+//      return map;
+//  }
